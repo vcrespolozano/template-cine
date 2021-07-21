@@ -1,0 +1,143 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+/*** CABECERA ***/
+header {
+    position         : relative;
+    padding          : 0 20px 20px;
+    background-image : url('../../resources/banner_welcome.jpg');
+    background-repeat: no-repeat;
+    background-size  : cover;
+    text-align       : center;
+    z-index          : 1;
+
+    &:after {
+        content: '';
+        @include absolutePos(0, 0, 0, 0);
+        background: rgba(0, 0, 0, .4);
+        z-index   : 1;
+    }
+
+    .header_content {
+        position: relative;
+        z-index : 2;
+
+        .logo {
+            position           : relative;
+            display            : block;
+            width              : 220px;
+            height             : 220px;
+            margin             : auto;
+            background         : url('../img/logo.png');
+            background-position: center;
+            background-repeat  : no-repeat;
+            background-size    : 85%;
+            background-color   : rgba(0, 0, 0, .5);
+            border-radius      : 0 0 5px 5px;
+            z-index            : 2;
+        }
+    
+        nav.menu {
+            position     : relative;
+            background   : rgba(0, 0, 0, .5);
+            max-width    : $w_768;
+            margin       : 0 auto;
+            margin-top   : 20px;
+            border-radius: 5px;
+            overflow     : hidden;
+            z-index      : 1;
+        
+            ul {
+                
+                font-size : 15px;
+                text-align: center;
+        
+                li {
+                    position      : relative;
+                    display       : inline-block;
+                    vertical-align: middle;
+                    width         : 20%;
+                    font-size     : 1.2em;
+                    line-height   : 1.5em;
+                    padding       : 15px 0;
+                    color         : $color_claro;
+                    text-transform: uppercase;
+                    cursor        : pointer;
+                    @include transicion(300ms);
+                    z-index: 1;
+        
+                    &:after {
+                        content: '';
+                        @include absolutePos(0, 0, auto, auto);
+                        @include transicion(300ms);
+                        width     : 0%;
+                        background: $color_secundario;
+                        height    : 3px;
+                        z-index   : 1;
+                    }
+
+                    &:before {
+                        content: '';
+                        @include absolutePos(auto, auto, 0, 0);
+                        @include transicion(300ms);
+                        width     : 0%;
+                        background: $color_secundario;
+                        height    : 3px;
+                        z-index   : 1;
+                    }
+        
+                    &.active {
+                        color     : $color_secundario;
+                        background: $color_claro;
+        
+                        &:after,
+                        &:before {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        
+            /*** HSCROLL ***/
+            .hscroll {
+                @include absolutePos(0, -1px, 0, auto);
+                background: $color_claro;
+                height    : 1px;
+                width     : 0;
+                margin    : 0 auto;
+                @include transicion(100ms);
+                z-index   : 3;
+            }
+        
+            .cerrar_menu {
+                display: none;
+                @include absolutePos(0, 8%, 0, auto);
+                width        : 50px;
+                height       : 50px;
+                line-height  : 50px;
+                border-radius: 100%;
+                margin       : 0 auto;
+                text-align   : center;
+                font-size    : 24px;
+                color        : $color_claro;
+                border       : 1px solid $color_principal;
+            }
+        }
+    }
+}
+
+.toggle_menu {
+    display    : none;
+    @include fixedPos(auto, auto, 4%, 6%);
+    border       : 1px solid $color_claro;
+    width        : 50px;
+    height       : 50px;
+    line-height  : 50px;
+    border-radius: 100%;
+    text-align   : center;
+    font-size    : 22px;
+    background   : $color_principal;
+    color        : $color_claro;
+    opacity      : .8;
+    z-index      : 9;
+}

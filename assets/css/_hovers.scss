@@ -1,0 +1,21 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+@media (hover: hover) {
+    header .header_content nav.menu ul li:hover {
+        color     : $color_secundario;
+        background: $color_claro;
+    }
+    header .header_content nav.menu ul li:hover:after,
+    header .header_content nav.menu ul li:hover:before {
+        width: 100%;
+    }
+    .popup .cerrar_popup:hover {
+        background-color: $color_principal;
+        color           : $color_negro;
+    }
+    .matriz__v1 .matriz__item:hover .matriz__item_info {
+        height : 100%;
+        padding: 25px;
+    }
+}

@@ -1,0 +1,43 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+/*** PARALLAX TEXT ****/
+.parallax__text {
+    position             : relative;
+    background-image     : url("../img/bg_parallax_1.jpg");
+    background-attachment: fixed;
+    background-position  : center;
+    background-repeat    : no-repeat;
+    background-size      : cover;
+    padding              : 40px;
+    z-index              : 1;
+
+    &:after {
+        content: '';
+        @include absolutePos(0, 0, 0, 0);
+        background: rgba(0, 0, 0, .5);
+        z-index   : 1;
+    }
+
+    .contenedor {
+        z-index: 2;
+
+        p {
+            position   : relative;
+            font-family: $fuente_titulos;
+            display    : block;
+            text-align : center;
+            font-size  : 32px;
+            color      : $color_claro;
+            line-height: 40px;
+            margin     : 25px 0;
+            z-index    : 1;
+
+            strong {
+                color: $color_claro;
+                font-weight: 600;
+            }
+        }
+    }
+
+}
