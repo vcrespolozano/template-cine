@@ -7,20 +7,19 @@ $(document).ready(function(){
     altos_hovers_cartelera();
 
     /** CARRUSEL/SLIDER - SOBRE MI */
-    // $('.carrusel_bienvenida .contiene_carrusel').owlCarousel({
-    //     autoplay       : true,
-    //     autoplayTimeout: 7000,
-    //     loop           : true,
-    //     margin         : 0,
-    //     mouseDrag      : false,
-    //     touchDrag      : false,
-    //     pullDrag       : false,
-    //     animateIn      : 'fadeIn',
-    //     animateOut     : 'fadeOut',
-    //     nav            : false,
-    //     dots           : false,
-    //     items          : 1,
-    // });
+    $('.carrousel__proximamente_container').owlCarousel({
+        autoplay       : true,
+        autoplayTimeout: 10000,
+        loop           : true,
+        margin         : 0,
+        mouseDrag      : false,
+        touchDrag      : false,
+        pullDrag       : false,
+        nav            : true,
+        dots           : false,
+        center         : true,
+        items          : 5,
+    });
 
     // Fijamos el año
     $('#year').html(year);

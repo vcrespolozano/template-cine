@@ -1,0 +1,153 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+/***** MATRIZ *****/
+.carrousel__proximamente {
+    position: relative;
+    z-index: 1;
+
+    .carrousel__proximamente_container {
+        position: relative;
+        z-index : 1;
+
+        .item {
+            position     : relative;
+            width        : calc(20% - 20px);
+            margin-right : 25px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            float        : left;
+            overflow     : hidden;
+            z-index      : 1;
+    
+            &:nth-child(5n) {
+                margin-right: 0;
+            }
+    
+            .item_pic {
+                position     : relative;
+                border-radius: 5px;
+                overflow     : hidden;
+                z-index      : 1;
+    
+                img {
+                    display   : block;
+                    width     : 100%;
+                    height    : auto;
+                    object-fit: cover;
+                }
+            }
+    
+            .item_info {
+                @include absolutePos(0, auto, 0, 0);
+                overflow      : hidden;
+                pointer-events: none;
+                padding       : 0 25px;
+                height        : 0%;
+                background    : rgba(234, 234, 234, .9);
+                @include transicionSE(450ms);
+                z-index       : 2;
+    
+                .title {
+                    position      : relative;
+                    display       : block;
+                    font-size     : 20px;
+                    text-transform: uppercase;
+                    font-weight   : 500;
+                    padding-bottom: 10px;
+                    margin-bottom : 10px;
+                    border-bottom : 1px solid $color_secundario;
+                    color         : $color_secundario;
+                    text-overflow : ellipsis;
+                    white-space   : nowrap;
+                    overflow      : hidden;
+                    z-index       : 1;
+                }
+    
+                .estreno {
+                    position     : relative;
+                    padding      : 5px;
+                    background   : rgba(67, 93, 130, .5);
+                    font-size    : 16px;
+                    line-height  : 24px;
+                    margin-bottom: 10px;
+                    border-radius: 5px;
+                    color        : $color_claro;
+                    z-index      : 1;
+
+                    strong {
+                        color: $color_claro;
+                    }
+                }
+        
+                .sinopsis {
+                    position   : relative;
+                    border-top : 1px solid $color_secundario;
+                    padding-top: 15px;
+                    overflow   : hidden;
+                    font-size  : 15px;
+                    color      : $color_oscuro;
+                    line-height: 20px;
+                    max-height : 300px;
+                    z-index    : 1;
+    
+                    p {
+                        display      : block;
+                        margin-bottom: 20px;
+    
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.owl-loaded {
+
+            .owl-item {
+                opacity: .3;
+                padding: 12px;
+                @include transicion(500ms);
+
+                .item {
+                    width         : 100%;
+                    margin        : 0;
+                    float         : none;
+                    pointer-events: none;
+                }
+
+                &.center {
+                    opacity: 1;
+
+                    .item {
+                        @include sombraGris(0px, 0px, 10px, 5px, .35);
+                        pointer-events: all;
+                    }
+                }
+            }
+
+            .owl-nav {
+                .owl-prev {
+                    @include absolutePos(12px, 12px, auto, 12px);
+                    width        : 50px;
+                    border-radius: 5px;
+                    color        : $color_claro;
+                    background   : rgba(0, 0, 0, .3);
+                    font-size    : 45px;
+                    z-index      : 1;
+                }
+    
+                .owl-next {
+                    @include absolutePos(auto, 12px, 12px, 12px);
+                    width        : 50px;
+                    border-radius: 5px;
+                    color        : $color_claro;
+                    background   : rgba(0, 0, 0, .3);
+                    font-size    : 45px;
+                    z-index      : 1;
+                }
+            }
+        }
+    }
+}
