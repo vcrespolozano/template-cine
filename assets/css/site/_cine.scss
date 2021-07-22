@@ -1,0 +1,202 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+/*** PARALLAX TEXT ****/
+.backgrounded__content {
+    position: relative;
+    padding : 40px;
+    overflow: hidden;
+    z-index : 1;
+
+    &:after {
+        content: '';
+        @include absolutePos(0, 0, 0, 0);
+        background: rgba(0, 0, 0, .6);
+        @include transicion(500ms);
+        z-index   : 2;
+    }
+
+    .contenedor {
+        z-index: 3;
+        @include transicion(500ms);
+
+        .titulo_general {
+            color: $color_claro;
+    
+            &:before {
+                background: $color_claro;
+            }
+        }
+
+        .text {
+            position   : relative;
+            font-size  : 16px;
+            line-height: 24px;
+            text-align : justify;
+            color      : $color_claro;
+            z-index    : 1;
+
+            p {
+                display      : block;
+                margin-bottom: 15px;
+    
+                strong {
+                    color: $color_secundario;
+                }
+            }
+        }
+
+        .spheres {
+            position  : relative;
+            margin-top: 20px;
+            text-align: center;
+            z-index   : 1;
+
+            .sphere {
+                position      : relative;
+                display       : inline-block;
+                vertical-align: middle;
+                background    : $color_claro;
+                width         : 170px;
+                height        : 170px;
+                padding       : 10px;
+                border        : 3px solid $color_secundario;
+                border-radius : 100%;
+                z-index       : 1;
+
+                p {
+                    font-family: $fuente_titulos;
+                    font-size  : 28px;
+                    line-height: 40px;
+                    height     : 40px;
+                    color      : $color_principal;
+                }
+
+                &:nth-child(1) {
+                    width       : 160px;
+                    height      : 160px;
+                    padding-top : 60px;
+                    margin-right: -20px;
+                }
+
+                &:nth-child(2) {
+                    width      : 140px;
+                    height     : 140px;
+                    padding-top: 40px;
+                    z-index    : 2;
+
+                    p {
+                        font-size  : 18px;
+                        line-height: 30px;
+                    }
+                }
+
+                &:nth-child(3) {
+                    width      : 180px;
+                    height     : 180px;
+                    padding-top: 55px;
+                    margin-left: -20px;
+
+                    p {
+                        font-size  : 25px;
+                        line-height: 35px;
+                    }
+                }
+            }
+        }
+    }
+
+    &.gallery_mode {
+        .contenedor {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        &:after {
+            opacity: 0;
+        }
+    }
+
+    .backgrounded__content_carrousel {
+        @include absolutePos(0, 0, 0, 0);
+        z-index: 1;
+
+        img {
+            display   : block;
+            width     : 100%;
+            height    : auto;
+            object-fit: cover;
+        }
+    }
+
+    .nav_cine {
+        @include absolutePos(0, 50%, 0, auto);
+        @include Ytranslate(-50%);
+        z-index : 3;
+
+        .owl-prev {
+            @include absolutePos(-100px, 50%, auto, auto);
+            border-radius      : 100%;
+            background-image   : url('../img/ico_chevron_l.png');
+            background-repeat  : no-repeat;
+            background-size    : 32px;
+            background-position: right 50px center;
+            background-color   : $color_claro;
+            width              : 200px;
+            height             : 200px;
+            @include Ytranslate(-50%);
+            border : 3px solid $color_principal;
+            z-index: 1;
+            opacity: .4;
+            @include transicion(300ms);
+
+            span {
+                display: none;
+            }
+        }
+
+        .owl-next {
+            @include absolutePos(auto, 50%, -100px, auto);
+            border-radius   : 100%;
+            background-image   : url('../img/ico_chevron_r.png');
+            background-repeat  : no-repeat;
+            background-size    : 32px;
+            background-position: left 50px center;
+            background-color: $color_claro;
+            width           : 200px;
+            height          : 200px;
+            @include Ytranslate(-50%);
+            border : 3px solid $color_principal;
+            z-index: 1;
+            opacity: .4;
+            @include transicion(300ms);
+
+            span {
+                display: none;
+            }
+        }
+    }
+
+    .toggle_gallery {
+        @include absolutePos(auto, 15px, 15px, auto);
+        width           : 50px;
+        height          : 50px;
+        line-height     : 50px;
+        font-size       : 24px;
+        text-align      : center;
+        border          : 2px solid $color_principal;
+        color           : $color_principal;
+        background-color: $color_claro;
+        border-radius   : 5px;
+        cursor          : pointer;
+        opacity         : .5;
+        @include transicion(300ms);
+        z-index: 4;
+
+        &.on {
+            border-color: $color_secundario;
+            color       : $color_secundario;
+            opacity     : 1;
+        }
+    }
+}

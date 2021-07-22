@@ -6,7 +6,7 @@ $(document).ready(function(){
 
     altos_hovers_cartelera();
 
-    /** CARRUSEL/SLIDER - SOBRE MI */
+    /** CARRUSEL/SLIDER - PROXIMAMENTE */
     $('.carrousel__proximamente_container').owlCarousel({
         autoplay       : true,
         autoplayTimeout: 10000,
@@ -21,6 +21,37 @@ $(document).ready(function(){
         items          : 5,
     });
 
+    /** CARRUSEL/SLIDER - CINE */
+    $('.backgrounded__content_carrousel').owlCarousel({
+        autoplay       : true,
+        autoplayTimeout: 6000,
+        loop           : true,
+        margin         : 0,
+        animateIn      : 'fadeIn',
+        animateOut     : 'fadeOut',
+        mouseDrag      : false,
+        touchDrag      : false,
+        pullDrag       : false,
+        nav            : true,
+        navContainer   : '.nav_cine',
+        dots           : false,
+        items          : 1,
+    });
+
+    // Activar/Desactivar galería
+    $('.toggle_gallery').click(function(){
+        if( $('#cine').hasClass('gallery_mode') )
+        {
+            $(this).removeClass('on');
+            $('#cine').removeClass('gallery_mode');
+        }
+        else
+        {
+            $(this).addClass('on');
+            $('#cine').addClass('gallery_mode');
+        }
+    });
+
     // Fijamos el año
     $('#year').html(year);
 
@@ -30,9 +61,6 @@ $(document).ready(function(){
         destino = id.substr(3);
 
         smoothScrollTo(destino);
-
-        $('.menu li').removeClass('active');
-        $(this).addClass('active');
 
         if( ancho_pantalla < 768 )
             $('.menu').removeClass('on');
@@ -80,18 +108,7 @@ $(document).ready(function(){
         });
     }
     else
-    {
-        /*** FIX PARA EL ZOOM DE BANNER BIENVENIDA **/
-        // $('.carrusel_bienvenida .contiene_carrusel').css('max-height', 'none');
-
-        // if( $('.contiene_artistas').hasClass('owl-carousel') )
-        // {
-        //     $('.contiene_artistas').owlCarousel('destroy'); 
-        //     $('.contiene_artistas').owlCarousel({touchDrag: false, mouseDrag: false});
-        // }
-
         $('.menu').removeClass('on');
-    }
 
 });
 
@@ -102,36 +119,6 @@ $(window).on('load', function(){
 });
 
 $(window).scroll(function (event) {
-    // GESTIÓN DE OPCIONES DEL MENÚ
-    let scroll = $(window).scrollTop();
-    let opcion = '';
-    
-    // Posiciones de los contenidos
-    inicio   = 0;
-    // about    = $('#sobre').offset().top;
-    // trabajos = $('#trabajos').offset().top;
-    // artists  = $('#artistas').offset().top;
-    // contact  = $('#contacto').offset().top;
-
-    // // Esta referencia es para activar la opción de los proyectos
-    // alto_ventana   = $(window).outerHeight(true);
-    // alto_documento = $(document).outerHeight(true);
-    // offset_bottom  = alto_documento - alto_ventana;
-
-    // if( scroll < about )
-    //     opcion = 'go_inicio';
-    // else if( scroll >= about && scroll < trabajos )
-    //     opcion = 'go_sobre';
-    // else if( scroll >= trabajos && scroll < artists )
-    //     opcion = 'go_trabajos';
-    // else if( scroll >= artists && scroll < contact && scroll < offset_bottom )
-    //     opcion = 'go_artistas';
-    // else
-    //     opcion = 'go_contacto';
-
-    // $('.menu li').removeClass('active');
-    // $('#'+opcion).addClass('active');
-
     // // HSCROLL
     // let max_scroll     = $(document).height() - $(window).height();
     // let current_scroll = $(window).scrollTop();
@@ -141,28 +128,15 @@ $(window).scroll(function (event) {
 
 $(window).on('orientationchange', function(){
     altos_hovers_cartelera();
-    // if( ancho_pantalla > 767 )
-    // {
-    //     let alto_nav = $('.menu').outerHeight(true);
-    //     $('body').css('padding-bottom', alto_nav+'px');
-    // }
 });
 
 $(window).on('resize', function(){
     altos_hovers_cartelera();
-    // if( ancho_pantalla > 767 )
-    // {
-    //     let alto_nav = $('.menu').outerHeight(true);
-    //     $('body').css('padding-bottom', alto_nav+'px');
-    // }
 });
 
 const smoothScrollTo = (destino) => {
 
-    if( destino == 'inicio' )
-        scroll = 0;
-    else
-        scroll  = $('#'+destino).position().top + 1;
+    scroll = $('#'+destino).position().top;
 
     $('html, body').animate({
         scrollTop: scroll

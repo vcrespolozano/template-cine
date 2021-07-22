@@ -22,4 +22,11 @@
         height : 100%;
         padding: 25px;
     }
+    .backgrounded__content .nav_cine .owl-next:hover,
+    .backgrounded__content .nav_cine .owl-prev:hover {
+        opacity: 1;
+    }
+    .backgrounded__content .toggle_gallery:hover {
+        opacity: 1;
+    }
 }
