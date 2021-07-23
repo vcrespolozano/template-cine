@@ -52,6 +52,19 @@ $(document).ready(function(){
         }
     });
 
+    // Cambio de formatos en comestibles
+    $('#comestibles .format').click(function(){
+
+        let parent      = $(this).parent();
+        let caja_precio = parent.siblings('.inner').children('.price');
+        let precio      = $(this).attr('data-price');
+
+        parent.children('.format').removeClass('sel');
+        $(this).addClass('sel');
+        caja_precio.html(precio+'€');
+
+    });
+
     // Fijamos el año
     $('#year').html(year);
 

@@ -532,6 +532,83 @@
         <span class="toggle_gallery" title="Mostrar/ocultar galería"><i class="fas fa-images"></i></span>
     </section>
 
+    <!-- SECCIÓN COMESTIBLES -->
+    <section class="section" id="comestibles">
+        <div class="contenedor">
+            <div class="titulo_general upper">Comestibles</div>
+            <div class="matriz__v2">
+                <div class="matriz__item rojo">
+                    <div class="inner">
+                        <span class="name">Palomitas</span>
+                        <span class="price">2.50€</span>
+                    </div>
+                    <div class="format_selector">
+                        <span class="format sel" data-price="2.50" data-format="S" title="Pequeño">S</span
+                        ><span class="format" data-price="3.50" data-format="M" title="Mediano">M</span
+                        ><span class="format" data-price="4.50" data-format="L" title="Grande">L</span
+                        ><span class="format" data-price="5.00" data-format="XL" title="Extra grande">XL</span>
+                    </div>              
+                </div>
+                <div class="matriz__item naranja">
+                    <div class="inner">
+                        <span class="name">Refresco</span>
+                        <span class="price">2.00€</span>
+                    </div>
+                    <div class="format_selector">
+                        <span class="format sel" data-price="2.00" data-format="S" title="Pequeño">S</span
+                        ><span class="format" data-price="2.50" data-format="M" title="Mediano">M</span
+                        ><span class="format" data-price="3.00" data-format="L" title="Grande">L</span
+                        ><span class="format" data-price="3.50" data-format="XL" title="Extra grande">XL</span>
+                    </div>              
+                </div>
+                <div class="matriz__item azul">
+                    <div class="inner">
+                        <span class="name">Agua</span>
+                        <span class="price">2.00€</span>           
+                    </div>
+                </div>
+                <span class="limpia"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contacto" id="contacto">
+        <div class="contenedor">
+            <div class="titulo_general upper">Contacto</div>
+            <form method="post" action="" id="form_contacto">
+                <div class="caja_campo">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="nombre" placeholder="Nombre">
+                </div>
+                <div class="caja_campo mitad izq">
+                    <label for="telefono">Teléfono</label>
+                    <input type="text" name="telefono" placeholder="Teléfono">
+                </div>
+                <div class="caja_campo mitad der">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" placeholder="Email">
+                </div>
+                <span class="limpia"></span>
+                <div class="caja_campo">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea name="mensaje" maxlength="200" placeholder="Mensaje"></textarea>
+                </div>
+                <label class="custom_checkbox">
+                    <input type="checkbox" name="politica" value="si">
+                    <span class="checkbox"></span>
+                    Acepto la
+                    <span class="checkbox_link" id="abrir_politica">Política de privacidad</span>
+                </label>
+                <button type="button" form="form_contacto" class="btn_form" id="submit">Enviar</button>
+            </form>
+            <div class="foto_contacto">
+                <img src="resources/contacto.jpg" alt="Contacto">
+            </div>
+            <span class="limpia"></span>
+        </div>
+    </section>
+
     <!-- PIE -->
     <footer>
         <p><span id="year"></span> &copy;<strong>CINE</strong> Todos los derechos reservados.</p>

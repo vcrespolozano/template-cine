@@ -29,4 +29,20 @@
     .backgrounded__content .toggle_gallery:hover {
         opacity: 1;
     }
+    .matriz__v2 .matriz__item.rojo .format_selector .format:hover {
+        background-color: $color_principal;
+        color           : $color_claro;
+    }
+    .matriz__v2 .matriz__item.naranja .format_selector .format:hover {
+        background-color: #ffb325;
+        color           : $color_claro;
+    }
+    .contacto form .btn_form:hover {
+        background  : $color_claro;
+        color       : $color_negro;
+        border-color: $color_principal;
+    }
+    .contacto form label.custom_checkbox .checkbox_link:hover {
+        color: $color_principal;
+    }
 }

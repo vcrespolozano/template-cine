@@ -3,15 +3,15 @@
 
 /**** PIE ****/
 footer {
-    position  : relative;
-    text-align: center;
-    border-top: 1px solid $color_principal;
-    z-index   : 1;
+    position        : relative;
+    text-align      : center;
+    background-color: $color_claro;
+    z-index         : 1;
 
     p {
         font-size  : 18px;
         line-height: 50px;
-        color      : $color_claro;
+        color      : $color_oscuro;
         padding    : 10px;
     }
 }
