@@ -4,12 +4,12 @@
 /*** POP POLÍTICA PRIVACIDAD ****/
 .popup {
     @include fixedPos(20px, 50%, 20px, auto);
-    border          : 1px solid $color_claro;
+    border          : 1px solid $color_principal;
     border-top-width: 2px;
     border-radius   : 10px;
     padding         : 50px 25px 50px;
     pointer-events  : none;
-    background-color: $color_negro;
+    background-color: $color_claro;
     font-size       : 16px;
     max-width       : $w_1260;
     margin          : 0 auto;
@@ -20,7 +20,7 @@
 
     .titulo_general {
         font-size      : 1.7em;
-        color          : $color_principal;
+        color          : $color_oscuro;
         padding-bottom : 9px;
         padding-left   : 45px;
         background-size: 27px;
@@ -30,7 +30,7 @@
         margin-top : 25px;
         font-size  : 1em;
         line-height: 1.5em;
-        color      : $color_claro;
+        color      : $color_oscuro;
         max-height : 700px;
         text-align : justify;
 
@@ -52,9 +52,9 @@
         height       : 50px;
         line-height  : 46px;
         margin       : 0 auto;
-        border       : 2px solid $color_claro;
+        border       : 2px solid $color_principal;
         border-radius: 100%;
-        background   : $color_negro;
+        background   : $color_oscuro;
         cursor       : pointer;
         @include transicion(200ms);
         z-index    : 1;
@@ -62,6 +62,7 @@
 }
 
 body.popuped {
+    overflow: hidden;
 
     &:after {
         content: '';

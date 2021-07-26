@@ -136,6 +136,7 @@
                     background   : rgba(0, 0, 0, .3);
                     font-size    : 45px;
                     z-index      : 1;
+                    @include transicion(300ms);
                 }
     
                 .owl-next {
@@ -146,6 +147,7 @@
                     background   : rgba(0, 0, 0, .3);
                     font-size    : 45px;
                     z-index      : 1;
+                    @include transicion(300ms);
                 }
             }
         }

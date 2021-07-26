@@ -10,9 +10,10 @@
     header .header_content nav.menu ul li:hover:before {
         width: 100%;
     }
-    .popup .cerrar_popup:hover {
-        background-color: $color_principal;
-        color           : $color_negro;
+    .popup .cerrar_popup:hover,
+    .pop_cartelera .cerrar_popup:hover {
+        background-color: $color_claro;
+        color           : $color_principal;
     }
     .matriz__v1 .matriz__item:hover .matriz__item_info {
         height : 100%;
@@ -38,11 +39,30 @@
         color           : $color_claro;
     }
     .contacto form .btn_form:hover {
-        background  : $color_claro;
-        color       : $color_negro;
-        border-color: $color_principal;
+        background  : $color_secundario;
     }
     .contacto form label.custom_checkbox .checkbox_link:hover {
         color: $color_principal;
+    }
+    footer .upper .redes .red:hover {
+        background-color: $color_principal;
+    }
+    footer .upper .redes .red:hover i {
+        opacity: 0;
+    }
+    footer .upper .redes .red:hover .txt {
+        @include Ytranslate(0);
+        opacity: 1;
+    }
+    .btn_top:hover {
+        color       : $color_claro;
+        border-color: $color_principal;
+    }
+    .btn_top:hover .fill {
+        @include scalar(1);
+    }
+    .carrousel__proximamente .carrousel__proximamente_container.owl-loaded .owl-nav .owl-prev:hover,
+    .carrousel__proximamente .carrousel__proximamente_container.owl-loaded .owl-nav .owl-next:hover {
+        background   : rgba(0, 0, 0, .6);
     }
 }

@@ -3,15 +3,131 @@
 
 /**** PIE ****/
 footer {
-    position        : relative;
-    text-align      : center;
-    background-color: $color_claro;
-    z-index         : 1;
+    position  : relative;
+    text-align: center;
+    border-top: 2px solid $color_principal;
+    z-index   : 1;
+    
+    .upper {
+        position        : relative;
+        padding         : 120px 20px 40px;
+        background-color: $color_claro;
+        z-index         : 1;
 
-    p {
-        font-size  : 18px;
-        line-height: 50px;
-        color      : $color_oscuro;
-        padding    : 10px;
+        .upper_content {
+            position     : relative;
+            max-width    : $w_768;
+            margin       : 0 auto;
+            padding      : 30px 20px;
+            border       : 2px solid $color_principal;
+            border-radius: 5px;
+            z-index      : 1;
+
+            .titulin {
+                position      : relative;
+                margin        : 0 auto;
+                line-height   : 30px;
+                font-size     : 18px;
+                font-weight   : 500;
+                text-align    : center;
+                margin        : 0 auto;
+                color         : $color_oscuro;
+                z-index       : 1;
+
+                &.abs {
+                    @include absolutePos(0, -15px, 0, auto);
+                    background-color: $color_claro;
+                    max-width       : 180px;
+                }
+            }
+    
+            ul.info_localizar {
+                list-style   : none;
+                position     : relative;
+                margin-bottom: 30px;
+                z-index      : 1;
+        
+                li {
+                    display    : block;
+                    font-size  : 16px;
+                    margin     : 5px 0;
+                    line-height: 20px;
+        
+                    &:nth-child(1) {
+                        margin-top: 0;
+                    }
+        
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+        
+                    a {
+                        color          : $color_principal;
+                        font-weight    : 500;
+                        text-decoration: none;
+                        @include transicion(300ms);
+                    }
+                }
+            }
+        }
+
+    
+        .redes {
+            position   : relative;
+            margin     : 15px auto 0;
+            padding-top: 35px;
+            border-top : 2px solid $color_principal;
+            z-index    : 1;
+    
+            .red {
+                position        : relative;
+                display         : inline-block;
+                vertical-align  : middle;
+                width           : calc(33.333% - 10px);
+                margin          : 0 5px;
+                height          : 50px;
+                line-height     : 50px;
+                border-radius   : 5px;
+                font-size       : 22px;
+                text-align      : center;
+                text-decoration : none;
+                background-color: $color_secundario;
+                color           : $color_claro;
+                overflow        : hidden;
+                z-index         : 1;
+                @include transicion(300ms);
+
+                i {
+                    @include absolutePos(0, 0, 0, 0);
+                    margin     : auto;
+                    line-height: 50px;
+                    @include transicion(300ms);
+                    z-index: 1;
+                }
+
+                .txt {
+                    display  : block;
+                    position : relative;
+                    font-size: 24px;
+                    opacity  : 0;
+                    @include Ytranslate(50px);
+                    @include transicion(300ms);
+                    z-index: 2;
+                }
+            }
+        }
+    }
+
+    .lower {
+        position  : relative;
+        padding   : 10px;
+        background: rgba(0,0,0,.6);
+        z-index   : 1;
+
+        p.rights {
+            font-size  : 16px;
+            line-height: 40px;
+            color      : $color_claro;
+        }
     }
 }

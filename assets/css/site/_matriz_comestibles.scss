@@ -2,9 +2,12 @@
 @use '../mixins' as *;
 
 /***** MATRIZ *****/
+.section#comestibles {
+    padding-bottom: 100px;
+}
 .matriz__v2 {
     position: relative;
-    z-index: 1;
+    z-index : 1;
 
     .matriz__item {
         position     : relative;

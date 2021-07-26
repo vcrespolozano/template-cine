@@ -79,6 +79,35 @@ $(document).ready(function(){
             $('.menu').removeClass('on');
     });
 
+    // Pop de películas de cartelera
+    $('#cartelera .matriz__item').click(function(){
+
+        let img      = $(this).attr('data-img');
+        let title    = $(this).attr('data-title');
+        let sessions = $(this).attr('data-sessions');
+        let length   = $(this).attr('data-length');
+        let sinopsis = $(this).find('.sinopsis').html();
+
+        let splitted_sessions = sessions.split('-');
+        let html_sessions = "";
+        if( splitted_sessions.length > 0 )
+        {
+            splitted_sessions.forEach(function(entry){
+                html_sessions += "<span class='session'>"+entry+"</span>";
+            });
+        }
+        let html_length = "<strong>Duración:</strong> "+length+"min";
+
+        $('#pop_cartelera_img').attr('src', img);
+        $('#pop_cartelera_title').html(title);
+        $('#pop_cartelera_sessions').html(html_sessions);
+        $('#pop_cartelera_duracion').html(html_length);
+        $('#pop_cartelera_sinopsis').html(sinopsis);
+
+        $('body').addClass('pop_cartelera_opened');
+
+    });
+
     // Submit contacto
     $('#submit').click(function(){
         validarContacto();
@@ -95,6 +124,13 @@ $(document).ready(function(){
 
     $('.cerrar_popup').click(function(){
         $('body').removeClass('popuped');
+        $('body').removeClass('pop_cartelera_opened');
+    });
+
+    // SUBIR AL TOP DE LA PÁGINA DESDE EL PIE
+    $('.btn_top').click(function() { 
+        $('html, body').animate({scrollTop:0}, 1000);
+        return false;
     });
 
     // PARA MÓVIL
@@ -131,12 +167,21 @@ $(window).on('load', function(){
     }, 900);
 });
 
+let lastScrollTop = 0;
 $(window).scroll(function (event) {
-    // // HSCROLL
-    // let max_scroll     = $(document).height() - $(window).height();
-    // let current_scroll = $(window).scrollTop();
-    // let perc_fill      = (current_scroll * 100) / max_scroll;
-    // $('.hscroll').css('width', perc_fill + '%');
+
+    let scroll         = $(window).scrollTop();
+    let max_scroll     = $(document).height() - $(window).height();
+    let current_scroll = $(window).scrollTop();
+    let perc_scroll    = (current_scroll * 100) / max_scroll;
+
+    // Para mostrar el botón de subir al top
+    if( perc_scroll > 25 )
+        $('.btn_top').addClass('on');
+    else
+        $('.btn_top').removeClass('on');
+
+    lastScrollTop = scroll;
 });
 
 $(window).on('orientationchange', function(){

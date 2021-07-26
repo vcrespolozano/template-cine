@@ -1,0 +1,146 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+/*** POP POLÍTICA PRIVACIDAD ****/
+.pop_cartelera {
+    @include fixedPos(20px, 50%, 20px, auto);
+    border          : 1px solid $color_principal;
+    border-top-width: 2px;
+    border-radius   : 10px;
+    padding         : 50px 25px 50px;
+    pointer-events  : none;
+    background-color: $color_claro;
+    font-size       : 16px;
+    max-width       : 1024px;
+    margin          : 0 auto;
+    @include transicion(350ms);
+    @include Ytranslate(0%);
+    opacity: 0;
+    z-index: 11;
+
+    .titulo_general {
+        font-size      : 1.7em;
+        color          : $color_oscuro;
+        padding-bottom : 9px;
+        padding-left   : 45px;
+        background-size: 27px;
+    }
+
+    .pop_cartelera__content {
+        position  : relative;
+        z-index   : 1;
+
+        .pic {
+            position     : relative;
+            float        : left;
+            width        : 440px;
+            border-radius: 5px;
+            @include sombraGris(0px, 0px, 10px, 5px, .35);
+            z-index : 1;
+
+            img {
+                display      : block;
+                width        : 100%;
+                height       : 600px;
+                border-radius: 5px;
+                object-fit   : cover;
+            }
+        }
+
+        .infos {
+            position  : relative;
+            float     : right;
+            padding   : 0 10px 0 25px;
+            width     : calc(100% - 440px);
+            max-height: 600px;
+            overflow-y: auto;
+            z-index   : 1;
+
+            .sessions {
+                position     : relative;
+                padding      : 5px;
+                background   : rgba(156, 75, 74, .5);
+                border-radius: 5px;
+                z-index      : 1;
+
+                .session {
+                    display        : inline-block;
+                    vertical-align : middle;
+                    font-size      : 16px;
+                    line-height    : 24px;
+                    padding-left   : 32px;
+                    background     : url('../img/ico_entrada.png') left center no-repeat;
+                    background-size: 24px;
+                    margin-right   : 10px;
+                    font-weight    : 500;
+                    color          : $color_oscuro;
+                }
+            }
+
+            .info_line {
+                position: relative;
+                margin  : 15px 0;
+                z-index : 1;
+
+                strong {
+                    color: $color_secundario;
+                }
+            }
+
+            .sinopsis {
+                position   : relative;
+                border-top : 1px solid $color_secundario;
+                padding-top: 15px;
+                overflow   : hidden;
+                font-size  : 15px;
+                color      : $color_oscuro;
+                line-height: 20px;
+                z-index    : 1;
+
+                p {
+                    display      : block;
+                    margin-bottom: 20px;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .cerrar_popup {
+        @include absolutePos(0, -25px, 0, auto);
+        text-align   : center;
+        font-size    : 1.5em;
+        color        : $color_claro;
+        width        : 50px;
+        height       : 50px;
+        line-height  : 46px;
+        margin       : 0 auto;
+        border       : 2px solid $color_principal;
+        border-radius: 100%;
+        background   : $color_oscuro;
+        cursor       : pointer;
+        @include transicion(200ms);
+        z-index    : 1;
+    }
+}
+
+body.pop_cartelera_opened {
+    overflow: hidden;
+
+    &:after {
+        content: '';
+        @include fixedPos(0, 0, 0, 0);
+        background: rgba(0, 0, 0, .75);
+        z-index: 10;
+    }
+
+    .pop_cartelera {
+        @include Ytranslate(-50%);
+        pointer-events: all;
+        opacity       : 1;
+    }
+
+}

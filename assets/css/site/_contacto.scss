@@ -5,197 +5,189 @@
 .contacto {
     position  : relative;
     padding   : 50px 0;
-    background: rgba(0, 0, 0, .6);
-    z-index   : 1;
+    z-index   : 2;
 
-    .titulo_general {
-        color: $color_claro;
-
-        &:before {
-            background: $color_claro;
-        }
+    &:after {
+        content: '';
+        @include absolutePos(0, 0, 0, 0);
+        margin          : auto;
+        width           : 780px;
+        height          : 780px;
+        border          : 4px solid $color_secundario;
+        border-radius   : 100%;
+        background-color: $color_claro;
+        z-index         : 1;
     }
 
-    form {
-        position: relative;
-        float   : right;
-        width   : 50%;
-        z-index : 1;
+    .contenedor {
+        max-width: 550px;
+        height   : 550px;
+        z-index  : 2;
 
-        .caja_campo {
-            position     : relative;
-            width        : 100%;
-            margin-bottom: 20px;
-            font-size    : 15px;
-            z-index      : 1;
-
-            &.mitad {
-                width: 49%;
+        form {
+            position: relative;
+            z-index : 2;
+    
+            .caja_campo {
+                position     : relative;
+                width        : 100%;
+                margin-bottom: 15px;
+                font-size    : 15px;
+                z-index      : 1;
+    
+                &.mitad {
+                    width: 49%;
+                }
+                
+                label {
+                    display      : block;
+                    color        : $color_oscuro;
+                    font-size    : 1.2em;
+                    font-weight  : 500;
+                    margin-bottom: 8px;
+                }
+                
+                input {
+                    display      : block;
+                    width        : 100%;
+                    margin       : 0 auto;
+                    background   : none;
+                    border       : 1px solid $color_principal;
+                    border-radius: 5px;
+                    color        : $color_oscuro;
+                    line-height  : 40px;
+                    height       : 40px;
+                    font-size    : 1.1em;
+                    padding      : 0 20px;
+                    @include transicion(200ms);
+    
+                    &:focus {
+                        border-color: $color_secundario;
+                    }
+    
+                    &.errored {
+                        border-color: red;
+                    }
+                }
+    
+                textarea {
+                    display      : block;
+                    width        : 100%;
+                    margin       : 0 auto;
+                    background   : none;
+                    border       : 1px solid $color_principal;
+                    border-radius: 5px;
+                    color        : $color_oscuro;
+                    font-size    : 1.1em;
+                    line-height  : 24px;
+                    height       : 130px;
+                    padding      : 10px 20px;
+                    resize       : none;
+                    @include transicion(300ms);
+    
+                    &:focus {
+                        border-color: $color_secundario;
+                    }
+    
+                    &.errored {
+                        border-color: red;
+                    }
+                }
+                
+                .contador_char {
+                    position   : absolute;
+                    bottom     : 0;
+                    right      : 0;
+                    font-size  : 12px;
+                    color      : $color_claro;
+                    line-height: 40px;
+                    text-align : right;
+                }
             }
-            
-            label {
-                display      : block;
-                color        : $color_claro;
-                font-size    : 1.2em;
-                font-weight  : 500;
-                margin-bottom: 8px;
+    
+            /*** CUSTOM CHECKBOX ***/
+            label.custom_checkbox {
+                display            : block;
+                position           : relative;
+                margin-bottom      : 12px;
+                cursor             : pointer;
+                font-size          : 1.1em;
+                line-height        : 40px;
+                color              : $color_oscuro;
+                text-align         : center;
+                -webkit-user-select: none;
+                -moz-user-select   : none;
+                -ms-user-select    : none;
+                user-select        : none;
+    
+                .checkbox {
+                    display         : inline-block;
+                    vertical-align  : middle;
+                    position        : relative;
+                    height          : 30px;
+                    width           : 30px;
+                    border          : 1px solid $color_oscuro;
+                    border-radius   : 5px;
+                    background-color: transparent;
+                    margin-right    : 12px;
+                    @include transicion(250ms);
+    
+                    &.errored {
+                        border-color: red;
+                    }
+                
+                    &:after {
+                        content          : "";
+                        @include absolutePos(10px, 6px, auto, auto);
+                        display          : none;
+                        width            : 8px;
+                        height           : 13px;
+                        border           : solid $color_claro;
+                        border-width     : 0 3px 3px 0;
+                        @include rotar(45deg);
+                    }
+                }
+    
+                input {
+                    position: absolute;
+                    opacity : 0;
+                    cursor  : pointer;
+                    height  : 0;
+                    width   : 0;
+    
+                    &:checked {
+                        & ~ .checkbox {
+                            background: $color_principal;
+    
+                            &:after {
+                                display: block;
+                            }
+                        }   
+                    }
+                }
+                a {
+                    color: $color_claro;
+                }
+                .checkbox_link {
+                    @include transicion(250ms);
+                    text-decoration: underline;
+                }
             }
-            
-            input {
+    
+            .btn_form {
                 display      : block;
                 width        : 100%;
-                margin       : 0 auto;
-                background   : none;
-                border       : 1px solid $color_claro;
+                margin-top   : 15px;
+                border       : none;
                 border-radius: 5px;
+                background   : $color_principal;
                 color        : $color_claro;
-                line-height  : 50px;
-                height       : 50px;
-                font-size    : 1.1em;
-                padding      : 0 20px;
-                @include transicion(200ms);
-
-                &:focus {
-                    border-color: $color_principal;
-                }
-
-                &.errored {
-                    border-color: red;
-                }
+                font-size    : 18px;
+                line-height  : 45px;
+                height       : 45px;
+                text-align   : center;
+                @include transicion(300ms);
             }
-
-            textarea {
-                display      : block;
-                width        : 100%;
-                margin       : 0 auto;
-                background   : none;
-                border       : 1px solid $color_claro;
-                border-radius: 5px;
-                color        : $color_claro;
-                font-size    : 1.1em;
-                line-height  : 24px;
-                height       : 150px;
-                padding      : 10px 20px;
-                resize       : none;
-                @include transicion(200ms);
-
-                &:focus {
-                    border-color: $color_principal;
-                }
-
-                &.errored {
-                    border-color: red;
-                }
-            }
-            
-            .contador_char {
-                position   : absolute;
-                bottom     : 0;
-                right      : 0;
-                font-size  : 12px;
-                color      : $color_claro;
-                line-height: 40px;
-                text-align : right;
-            }
-        }
-
-        /*** CUSTOM CHECKBOX ***/
-        label.custom_checkbox {
-            display            : block;
-            position           : relative;
-            margin-bottom      : 12px;
-            cursor             : pointer;
-            font-size          : 1.1em;
-            line-height        : 40px;
-            color              : $color_claro;
-            text-align         : center;
-            -webkit-user-select: none;
-            -moz-user-select   : none;
-            -ms-user-select    : none;
-            user-select        : none;
-
-            .checkbox {
-                display         : inline-block;
-                vertical-align  : middle;
-                position        : relative;
-                height          : 30px;
-                width           : 30px;
-                border          : 1px solid $color_claro;
-                border-radius   : 5px;
-                background-color: transparent;
-                margin-right    : 12px;
-                @include transicion(250ms);
-
-                &.errored {
-                    border-color: red;
-                }
-            
-                &:after {
-                    content          : "";
-                    @include absolutePos(10px, 6px, auto, auto);
-                    display          : none;
-                    width            : 8px;
-                    height           : 13px;
-                    border           : solid $color_claro;
-                    border-width     : 0 3px 3px 0;
-                    @include rotar(45deg);
-                }
-            }
-
-            input {
-                position: absolute;
-                opacity : 0;
-                cursor  : pointer;
-                height  : 0;
-                width   : 0;
-
-                &:checked {
-                    & ~ .checkbox {
-                        background: $color_principal;
-
-                        &:after {
-                            display: block;
-                        }
-                    }   
-                }
-            }
-            a {
-                color: $color_claro;
-            }
-            .checkbox_link {
-                @include transicion(250ms);
-                text-decoration: underline;
-            }
-        }
-
-        .btn_form {
-            display      : block;
-            width        : 100%;
-            margin-top   : 15px;
-            border       : none;
-            border-radius: 5px;
-            background   : $color_principal;
-            color        : $color_claro;
-            font-size    : 18px;
-            line-height  : 45px;
-            height       : 45px;
-            text-align   : center;
-            @include transicion(300ms);
-        }
-    }
-
-    .foto_contacto {
-        float        : left;
-        width        : 50%;
-        overflow     : hidden;
-        padding-right: 4%;
-
-        img {
-            display      : block;
-            width        : 100%;
-            height       : auto;
-            border-radius: 5px;
-            object-fit   : cover;
         }
     }
 }
