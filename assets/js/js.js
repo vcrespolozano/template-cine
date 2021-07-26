@@ -104,7 +104,9 @@ $(document).ready(function(){
         $('#pop_cartelera_duracion').html(html_length);
         $('#pop_cartelera_sinopsis').html(sinopsis);
 
-        $('body').addClass('pop_cartelera_opened');
+        setTimeout(function(){
+            $('body').addClass('pop_cartelera_opened');
+        }, 300);
 
     });
 
