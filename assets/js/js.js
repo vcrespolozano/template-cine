@@ -104,10 +104,7 @@ $(document).ready(function(){
         $('#pop_cartelera_duracion').html(html_length);
         $('#pop_cartelera_sinopsis').html(sinopsis);
 
-        setTimeout(function(){
-            $('body').addClass('pop_cartelera_opened');
-        }, 300);
-
+        $('body').addClass('pop_cartelera_opened');
     });
 
     // Submit contacto
@@ -127,6 +124,7 @@ $(document).ready(function(){
     $('.cerrar_popup').click(function(){
         $('body').removeClass('popuped');
         $('body').removeClass('pop_cartelera_opened');
+        limpiar_pop_cartelera();
     });
 
     // SUBIR AL TOP DE LA PÁGINA DESDE EL PIE
@@ -201,6 +199,14 @@ const smoothScrollTo = (destino) => {
     $('html, body').animate({
         scrollTop: scroll
     }, 800);
+}
+
+const limpiar_pop_cartelera = () => {
+    $('#pop_cartelera_img').attr('src', '');
+    $('#pop_cartelera_title').html('');
+    $('#pop_cartelera_sessions').html('');
+    $('#pop_cartelera_duracion').html('');
+    $('#pop_cartelera_sinopsis').html('');
 }
 
 const altos_hovers_cartelera = () => {
