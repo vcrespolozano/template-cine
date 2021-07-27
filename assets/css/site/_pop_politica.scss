@@ -22,17 +22,17 @@
         font-size      : 1.7em;
         color          : $color_oscuro;
         padding-bottom : 9px;
-        padding-left   : 45px;
-        background-size: 27px;
     }
 
     .descripcion {
-        margin-top : 25px;
-        font-size  : 1em;
-        line-height: 1.5em;
-        color      : $color_oscuro;
-        max-height : 700px;
-        text-align : justify;
+        margin-top   : 25px;
+        font-size    : 1em;
+        line-height  : 1.5em;
+        color        : $color_oscuro;
+        max-height   : 700px;
+        overflow-y   : auto;
+        padding-right: 10px;
+        text-align   : justify;
 
         p {
             margin: 12px 0;

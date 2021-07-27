@@ -206,33 +206,43 @@ strong {
   @include fixedPos(0, 0, 0, 0);
   z-index   : 10;
 
-  .txt {
+  .circles {
     @include absolutePos(0, 0, 0, 0);
-    font-family              : $fuente_titulos;
-    color                    : $color_principal;
-    font-size                : 30px;
-    width                    : 120px;
-    height                   : 40px;
-    line-height              : 40px;
+    width                    : 180px;
+    height                   : 180px;
     margin                   : auto;
     animation-name           : 'pulse';
-    animation-duration       : 1500ms;
+    animation-duration       : 2000ms;
     animation-iteration-count: infinite;
     z-index                  : 1;
-  }
 
-  &:after {
-    content            : '';
-    @include absolutePos(0, 0, 0, 0);
-    width              : 240px;
-    height             : 240px;
-    margin             : auto;
-    border-radius      : 100%;
-    border             : 1px solid $color_claro;
-    border-bottom-width: 3px;
-    border-right-width : 0;
-    border-top-width   : 0;
-    animation          : rotate-center 1.5s linear infinite both;
+    &:before {
+      content            : '';
+      @include absolutePos(0, 0, 0, 0);
+      width              : 180px;
+      height             : 180px;
+      margin             : auto;
+      border-radius      : 100%;
+      border             : 3px dotted $color_principal;
+      border-bottom-width: 3px;
+      border-right-width : 0;
+      border-top-width   : 0;
+      animation          : rotate-center-reverse 1.4s linear infinite both;
+    }
+  
+    &:after {
+      content            : '';
+      @include absolutePos(0, 0, 0, 0);
+      width              : 170px;
+      height             : 170px;
+      margin             : auto;
+      border-radius      : 100%;
+      border             : 2px dotted $color_claro;
+      border-bottom-width: 4px;
+      border-right-width : 0;
+      border-top-width   : 0;
+      animation          : rotate-center 1.4s linear infinite both;
+    }
   }
 }
 
@@ -283,7 +293,7 @@ strong {
  * animation rotate-center
  * ----------------------------------------
  */
- @-webkit-keyframes rotate-center {
+@-webkit-keyframes rotate-center {
   0% {
     -webkit-transform: rotate(0);
             transform: rotate(0);
@@ -301,6 +311,27 @@ strong {
   100% {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes rotate-center-reverse {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+@keyframes rotate-center-reverse {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
   }
 }
 

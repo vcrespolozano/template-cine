@@ -114,4 +114,42 @@
             }
         }
     }
+
+    &.owl-loaded {
+
+        .owl-item {
+            padding: 12px;
+            @include transicion(500ms);
+
+            .matriz__item {
+                width        : 100%;
+                margin-right : 0;
+                margin-bottom: 0;
+            }
+        }
+
+        .owl-nav {
+            .owl-prev {
+                @include absolutePos(12px, 12px, auto, 12px);
+                width        : 50px;
+                border-radius: 5px;
+                color        : $color_claro;
+                background   : rgba(0, 0, 0, .3);
+                font-size    : 45px;
+                z-index      : 1;
+                @include transicion(300ms);
+            }
+
+            .owl-next {
+                @include absolutePos(auto, 12px, 12px, 12px);
+                width        : 50px;
+                border-radius: 5px;
+                color        : $color_claro;
+                background   : rgba(0, 0, 0, .3);
+                font-size    : 45px;
+                z-index      : 1;
+                @include transicion(300ms);
+            }
+        }
+    }
 }

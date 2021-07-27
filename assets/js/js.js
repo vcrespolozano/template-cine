@@ -19,6 +19,13 @@ $(document).ready(function(){
         dots           : false,
         center         : true,
         items          : 5,
+        responsive: {
+            0   : { items: 1 },
+            600 : { items: 2 },
+            768 : { items: 3 },
+            1280: { items: 4 },
+            1440: { items: 5 }
+        }
     });
 
     /** CARRUSEL/SLIDER - CINE */
@@ -37,6 +44,10 @@ $(document).ready(function(){
         dots           : false,
         items          : 1,
     });
+
+    // Alto gallery
+    let alto_cine = $('#cine').outerHeight();
+    $('#cine img').css('height', alto_cine+'px');
 
     // Activar/Desactivar galería
     $('.toggle_gallery').click(function(){
@@ -75,12 +86,17 @@ $(document).ready(function(){
 
         smoothScrollTo(destino);
 
-        if( ancho_pantalla < 768 )
+        if( ancho_pantalla < 767 )
+        {
             $('.menu').removeClass('on');
+            $('.toggle_menu').removeClass('off');
+        }
     });
 
     // Pop de películas de cartelera
     $('#cartelera .matriz__item').click(function(){
+
+        $('.loader').fadeIn('slow');
 
         let img      = $(this).attr('data-img');
         let title    = $(this).attr('data-title');
@@ -104,7 +120,10 @@ $(document).ready(function(){
         $('#pop_cartelera_duracion').html(html_length);
         $('#pop_cartelera_sinopsis').html(sinopsis);
 
-        $('body').addClass('pop_cartelera_opened');
+        setTimeout(function(){
+            $('.loader').fadeOut('slow');
+            $('body').addClass('pop_cartelera_opened');
+        }, 1000);
     });
 
     // Submit contacto
@@ -133,31 +152,7 @@ $(document).ready(function(){
         return false;
     });
 
-    // PARA MÓVIL
-    if( ancho_pantalla < 768 )
-    {
-        /** CARRUSEL/SLIDER - SERVICIOS */
-        // $('.contiene_artistas').addClass('owl-carousel');
-        // $('.contiene_artistas').owlCarousel({
-        //     autoplay       : true,
-        //     autoplayTimeout: 7000,
-        //     loop           : true,
-        //     margin         : 0,
-        //     nav            : false,
-        //     dots           : true,
-        //     items          : 1,
-        // });
-
-        $('.toggle_menu').click(function(){
-            $('.menu').addClass('on');
-        });
-
-        $('.cerrar_menu').click(function(){
-            $('.menu').removeClass('on');
-        });
-    }
-    else
-        $('.menu').removeClass('on');
+    carrouselCarteleraMovil(false);
 
 });
 
@@ -184,13 +179,74 @@ $(window).scroll(function (event) {
     lastScrollTop = scroll;
 });
 
-$(window).on('orientationchange', function(){
+let previousOrientation = '';
+$(window).on('resize', function(){
+
+    let orientation = ( $(window).width() > $(window).height() ? 'landscape':'portrait' );
+    if( previousOrientation == '' )
+        previousOrientation = orientation;
+
     altos_hovers_cartelera();
+
+    carrouselCarteleraMovil(true);
 });
 
-$(window).on('resize', function(){
-    altos_hovers_cartelera();
-});
+const carrouselCarteleraMovil = (delayed) => {
+
+    let delayTime = ( delayed === true ? 1500:0 );
+    if( delayed )
+        $('.loader').fadeIn('slow');
+
+    setTimeout(function(){
+        if( $(window).width() <= 1024 )
+        {
+            /** CARRUSEL/SLIDER - SERVICIOS */
+            $('#cartelera .matriz__v1 .limpia').remove();
+            $('#cartelera .matriz__v1').addClass('owl-carousel');
+            $('#cartelera .matriz__v1').owlCarousel({
+                autoplay       : true,
+                autoplayTimeout: 10000,
+                loop           : true,
+                margin         : 0,
+                mouseDrag      : false,
+                touchDrag      : true,
+                pullDrag       : false,
+                nav            : true,
+                dots           : false,
+                items          : 3,
+                responsive: {
+                    0   : { items: 1 },
+                    768 : { items: 2 },
+                    1024: { items: 3 }
+                }
+            });
+
+            $('.toggle_menu').click(function(){
+                $('.menu').addClass('on');
+                $(this).addClass('off');
+            });
+
+            $('.cerrar_menu').click(function(){
+                $('.menu').removeClass('on');
+                $('.toggle_menu').removeClass('off');
+            });
+        }
+        else
+        {
+            if( $('#cartelera .matriz__v1').hasClass('owl-carousel') )
+            {
+                $('#cartelera .matriz__v1').trigger('destroy.owl.carousel');
+                $('#cartelera .matriz__v1').removeClass('owl-carousel')
+                $('#cartelera .matriz__v1').append('<span class="limpia"></span>');
+            }
+
+            $('.menu').removeClass('on');
+        }
+
+        if( delayed )
+            $('.loader').fadeOut('slow');
+    }, delayTime);
+}
 
 const smoothScrollTo = (destino) => {
 

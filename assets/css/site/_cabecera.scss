@@ -127,5 +127,11 @@ header {
     background   : $color_principal;
     color        : $color_claro;
     opacity      : .8;
+    @include transicion(300ms);
     z-index      : 9;
+
+    &.off {
+        opacity       : 0;
+        pointer-events: none;
+    }
 }
